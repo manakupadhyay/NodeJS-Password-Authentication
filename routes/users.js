@@ -71,15 +71,14 @@ router.post('/register', (req, res) => {
             password2
           });
         } else {
-          var success = [];
           const newUser = new User({
             name,
             email,
             password
           });
           //hash user's password
-          bcrypt.genSalt(10, (err, salt) =>
-            bcrypt.hash(newUser.password, salt, (err, hash) => {
+          bcrypt.genSalt(10, (err, salt) =>   // returns salt
+            bcrypt.hash(newUser.password, salt, (err, hash) => {    // returns hash
               if (err) console.log(err);
 
               // set password to hashed password

@@ -8,7 +8,7 @@ const User = require("./usermodel.js");
 
 module.exports = function(passport) {
   passport.use(
-    new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+    new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {  // email,password- entered by user
       // Match user
       User.findOne({
         email: email
@@ -16,7 +16,6 @@ module.exports = function(passport) {
         if (!user) {
           return done(null, false, { message: 'Email not registered' });  // (error,user,option/message)
         }
-
         // Match password
         bcrypt.compare(password, user.password, (err, isMatch) => {
           if (err) throw err;
@@ -26,7 +25,7 @@ module.exports = function(passport) {
           }
           // entered password is incorrect
           else {
-            return done(null, user.email, { message: 'Password incorrect' });
+            return done(null, false, { message: 'Password incorrect' });
           }
         });
       });
