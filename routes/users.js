@@ -102,7 +102,6 @@ router.post('/register', (req, res) => {
 // handle Login
 /*
 Authenticating requests is as simple as calling passport.authenticate() and specifying which strategy to employ.
-
 */
 router.post('/login', (req,res,next)=>{
   passport.authenticate('local',{
