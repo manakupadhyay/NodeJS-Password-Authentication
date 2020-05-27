@@ -8,7 +8,7 @@ module.exports = {
     res.redirect('/users/login');
   },
   forwardAuthenticated: function(req, res, next) {
-    if (!req.isAuthenticated()) {
+    if (!req.isAuthenticated()) { // if user is not logged-in
       return next();
     }
     res.redirect('/dashboard');

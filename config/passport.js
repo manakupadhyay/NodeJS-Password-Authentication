@@ -1,9 +1,9 @@
-// LOGIN
+// LOGIN AUTHENTICATION
 
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 
-// loading user model
+// LOAD USER-MODEL FROM DATABASE
 const User = require("./usermodel.js");
 
 module.exports = function(passport) {
@@ -31,11 +31,11 @@ module.exports = function(passport) {
       });
     })
   );
-  // setting the session
+  // SET THE SESSION
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
-  //deleting the session
+  // DELETE SESSION
   passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
       done(err, user);

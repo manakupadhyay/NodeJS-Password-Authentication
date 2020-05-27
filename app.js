@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 //BODYPARSER
 app.use(express.urlencoded({extended:false}));
 
-// Express session
+// EXPRESS SESSION
 app.use(
   session({
     secret: 'secret',
@@ -25,14 +25,14 @@ app.use(
   })
 );
 
-// Passport middleware
+// PASSPORT MIDDLEWARE
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Connect flash
+// CONNECT FLASH
 app.use(flash());
 
-//global variables
+// GLOBAL VARIABLES
 app.use((req,res,next)=>{
     res.locals.success_message = req.flash("success_message");
     res.locals.error_message = req.flash("error_message");
@@ -41,7 +41,7 @@ app.use((req,res,next)=>{
     next();
 });
 
-//other files
+// OTHER ROUTES
 var index = require('./routes/index.js');
 var users = require('./routes/users.js');
 
@@ -51,7 +51,7 @@ app.use('/users', users);   // => /users/...
 
 
 
-//setting up port
+// PORT
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function(){
   console.log('Server started on port 3000');

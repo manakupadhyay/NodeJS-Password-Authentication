@@ -17,7 +17,7 @@ router.get('/register',forwardAuthenticated, (req, res) => { // => /users/regist
 })
 
 
-//handle register
+// HANLDE RESGISTER
 router.post('/register', (req, res) => {
   const {
     name,
@@ -99,7 +99,7 @@ router.post('/register', (req, res) => {
   }
 });
 
-// handle Login
+// HANDLE LOGIN
 /*
 Authenticating requests is as simple as calling passport.authenticate() and specifying which strategy to employ.
 */
@@ -112,7 +112,7 @@ router.post('/login', (req,res,next)=>{
   })(req,res,next);
 });
 
-//handle logouts
+// HANDLE LOGOUTS
 router.get('/logout', (req,res)=>{
   // Invoking logout() will remove the req.user property and clear the login session (if any)
   req.logout();
